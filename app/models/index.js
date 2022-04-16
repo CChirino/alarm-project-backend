@@ -22,6 +22,7 @@ db.sequelize = sequelize;
 db.user =     require("../models/user.model.js")(sequelize, Sequelize);
 db.role =     require("../models/role.model.js")(sequelize, Sequelize);
 db.contact =  require("../models/contact.model.js")(sequelize, Sequelize);
+db.status =  require("../models/status.model.js")(sequelize, Sequelize);
 
 db.role.belongsToMany(db.user, {
   through: "user_roles",
@@ -33,7 +34,7 @@ db.user.belongsToMany(db.role, {
   foreignKey: "user_id",
   otherKey: "roleId"
 });
-db.ROLES = ["user", "admin", "moderator"];
+db.status = ["Green", "Yellow", "Red"];
 
 db.user.hasMany(db.contact);
 db.contact.belongsTo(db.user);

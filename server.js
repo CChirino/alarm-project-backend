@@ -36,7 +36,7 @@ function initial() {
  
   Role.create({
     id: 2,
-    name: "moderator"
+    name: "contact"
   });
  
   Role.create({
@@ -44,6 +44,7 @@ function initial() {
     name: "admin"
   });
 }
+
 // routes
 require('./app/routes/auth.routes')(app);
 require('./app/routes/user.routes')(app);
