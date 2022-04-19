@@ -35,11 +35,11 @@ isAdmin = (req, res, next) => {
     });
   });
 };
-isModerator = (req, res, next) => {
+isContact = (req, res, next) => {
   User.findByPk(req.userId).then(user => {
     user.getRoles().then(roles => {
       for (let i = 0; i < roles.length; i++) {
-        if (roles[i].name === "moderator") {
+        if (roles[i].name === "contact") {
           next();
           return;
         }
@@ -50,11 +50,11 @@ isModerator = (req, res, next) => {
     });
   });
 };
-isModeratorOrAdmin = (req, res, next) => {
+isContactOrAdmin = (req, res, next) => {
   User.findByPk(req.userId).then(user => {
     user.getRoles().then(roles => {
       for (let i = 0; i < roles.length; i++) {
-        if (roles[i].name === "moderator") {
+        if (roles[i].name === "contact") {
           next();
           return;
         }
@@ -72,7 +72,7 @@ isModeratorOrAdmin = (req, res, next) => {
 const authJwt = {
   verifyToken: verifyToken,
   isAdmin: isAdmin,
-  isModerator: isModerator,
-  isModeratorOrAdmin: isModeratorOrAdmin
+  isContact: isContact,
+  isContactOrAdmin: isContactOrAdmin
 };
 module.exports = authJwt;

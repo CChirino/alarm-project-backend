@@ -3,7 +3,16 @@ module.exports = (sequelize, Sequelize) => {
       id: {
         type: Sequelize.INTEGER,
         primaryKey: true
-      }
+      },
+      phone: {
+        type: Sequelize.STRING
+      },
+      name: {
+        type: Sequelize.STRING
+      },
+      lastname: {
+        type: Sequelize.STRING
+      },
     });
     return Contact;
   };
