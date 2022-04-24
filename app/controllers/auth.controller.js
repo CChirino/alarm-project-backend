@@ -39,6 +39,7 @@ exports.signup = (req, res) => {
   .catch(err => {
     res.status(500).send({ message: err.message });
   });
+  console.log(req.body)
 };
 exports.signin = (req, res) => {
   User.findOne({
