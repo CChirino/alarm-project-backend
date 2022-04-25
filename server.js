@@ -4,14 +4,12 @@ const cors = require("cors");
 const app = express();
 const db = require("./app/models");
 const Role = db.role;
-db.sequelize.sync({force: true}).then(() => {
-  console.log('Drop and Resync Db');
-  initial();
-});
+db.sequelize.sync();
 // HEADER
 
 var corsOptions = {
-  origin: "http://localhost:8081"
+  origin: "*",
+  methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
 };
 app.use(cors(corsOptions));
 // parse requests of content-type - application/json
@@ -23,7 +21,7 @@ app.get("/", (req, res) => {
   res.json({ message: "Welcome to Alarm project application." });
 });
 // set port, listen for requests
-const PORT = process.env.PORT || 8080;
+const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}.`);
 });
@@ -48,4 +46,5 @@ function initial() {
 // routes
 require('./app/routes/auth.routes')(app);
 require('./app/routes/user.routes')(app);
+require('./app/routes/contact.routes')(app);
 // set port, listen for requests
