@@ -4,30 +4,31 @@ const Op = db.Sequelize.Op;
 
 // Create and Save a new Contact
 exports.create = (req, res) => {
-    // Validate request
-    if (!req.body.phone) {
-        res.status(400).send({
-          message: "Content can not be empty!"
-        });
-        return;
-      }
-      // Create a Contact
-      const contact = {
-        phone: req.body.title,
-        name: req.body.description,
-        lastname: req.body.published  
-      };
-      // Save Tutorial in the database
-      Contact.create(contact)
-        .then(data => {
-          res.send(data);
-        })
-        .catch(err => {
-          res.status(500).send({
-            message:
-              err.message || "Some error occurred while creating the Tutorial."
-          });
-        });
+  // Validate request
+  if (!req.body.phone) {
+    res.status(400).send({
+      message: "Content can not be empty!"
+    });
+    return;
+  }
+
+  // Create a Contact
+  const contact = {
+    phone: req.body.phone,
+    name: req.body.name,
+    lastname: req.body.lastname  
+  };
+  // Save Contact in the database
+  Contact.create(contact)
+    .then(data => {
+      res.send(data);
+    })
+    .catch(err => {
+      res.status(500).send({
+        message:
+          err.message || "Some error occurred while creating the Tutorial."
+      });
+    });
 };
 // Retrieve all Contacts from the database.
 exports.findAll = (req, res) => {
