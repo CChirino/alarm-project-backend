@@ -21,11 +21,10 @@ app.get("/", (req, res) => {
   res.json({ message: "Welcome to Alarm project application." });
 });
 // set port, listen for requests
-const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => {
-  console.log(`Server is running on port ${PORT}.`);
-});
-
+app.listen(process.env.PORT || 3000, function() {
+  console.log('Server listening on port 3000');
+  
+  });
 function initial() {
   Role.create({
     id: 1,
