@@ -7,16 +7,16 @@ const contact = require("../controllers/contact.controller.js");
       );
       next();
     });
-    app.post("/", contact.create);
+    app.post("/api/contacts", contact.create);
     // Retrieve all Contacts
-    app.get("/", contact.findAll);
+    app.get("/api/contacts", contact.findAll);
     // Retrieve a single Contacts with id
-    app.get("/:id", contact.findOne);
+    app.get("/api/contacts/:id", contact.findOne);
     // Update a Contacts with id
-    app.put("/:id", contact.update);
+    app.put("/api/contacts/:id", contact.update);
     // Delete a Contacts with id
-    app.delete("/:id", contact.delete);
+    app.delete("/api/contacts/:id", contact.delete);
     // Delete all  Contacts
-    app.delete("/", contact.deleteAll);
+    app.delete("/api/contacts/", contact.deleteAll);
   };
   
