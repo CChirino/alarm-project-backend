@@ -20,15 +20,17 @@ exports.create = (req, res) => {
   };
   // Save Contact in the database
   Contact.create(contact)
-    .then(data => {
-      res.send(data);
-    })
-    .catch(err => {
-      res.status(500).send({
-        message:
-          err.message || "Some error occurred while creating the Tutorial."
-      });
+  .then(data => {
+    res.send(data);
+    console.log(data);
+
+  })
+  .catch(err => {
+    res.status(500).send({
+      message:
+      err.message || "Some error occurred while creating the Tutorial."
     });
+  });
 };
 // Retrieve all Contacts from the database.
 exports.findAll = (req, res) => {
