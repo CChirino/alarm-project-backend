@@ -11,20 +11,17 @@ exports.create = (req, res) => {
     });
     return;
   }
-
   // Create a Contact
   const contact = {
     phone: req.body.phone,
     name: req.body.name,
     lastname: req.body.lastname,
-    userId: decoded.id
+    userId: req.userId
   };
-  console.log(contact);
   // Save Contact in the database
   Contact.create(contact)
   .then(data => {
     res.send(data);
-    console.log(data);
 
   })
   .catch(err => {
