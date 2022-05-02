@@ -16,8 +16,10 @@ exports.create = (req, res) => {
   const contact = {
     phone: req.body.phone,
     name: req.body.name,
-    lastname: req.body.lastname  
+    lastname: req.body.lastname,
+    userId: decoded.id
   };
+  console.log(contact);
   // Save Contact in the database
   Contact.create(contact)
   .then(data => {

@@ -1,4 +1,6 @@
 const contact = require("../controllers/contact.controller.js");
+const { authJwt } = require("../middleware");
+
   module.exports = function(app) {
     app.use(function(req, res, next) {
       res.header(
@@ -7,7 +9,10 @@ const contact = require("../controllers/contact.controller.js");
       );
       next();
     });
-    app.post("/api/contacts", contact.create);
+    app.post(
+    "/api/contacts",     
+    [authJwt.verifyToken],
+    contact.create);
     // Retrieve all Contacts
     app.get("/api/contacts", contact.findAll);
     // Retrieve a single Contacts with id
